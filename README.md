@@ -12,7 +12,7 @@ A directive providing control flow within a dotbot configuration file with condi
 ## Options
 
 Name | Description | Default
--------------
+ --------| -------- | --------
 if | The relative path to a dotbot configuration file that should be read and executed | N/A
 then | Actions/tasks to execute if the condition evaluates to true | []
 else | Actions/tasks to execute if the condition evaluates to false | []
