@@ -23,9 +23,9 @@ class Tester(object):
                             if not local_success:
                                 return False
                         except Exception as err:
-                            self._log.error("An error was encountered while testing condition %s" % action)
-                            self._log.debug(err)
-                            return False
+                            self._log.error("Failed to evaluate condition %s with value(s) %s" % (action, task[action]))
+                            # Propogate the error since we don't know what to do
+                            raise err
         return True
 
     def normalize_tests(self, tests):
@@ -36,5 +36,4 @@ class Tester(object):
         elif isinstance(tests, list):
             return map(lambda test: { 'shell': test } if isinstance(test, str) else test, tests)
         else:
-            # TODO error
-            return []
+            raise ValueError("Unable to handle conditions of type: %s" % type(tests))
