@@ -15,7 +15,7 @@ class Conditional(dotbot.Plugin):
 
     def handle(self, directive, data):
         if not self.can_handle(directive):
-            raise ValueError("%s cannot handle directive %s" % (self.__name, directive))
+            raise ValueError("%s cannot handle directive %s" % (self.__class__.__name__, directive))
         return self._process_conditional(data)
 
     def _process_conditional(self, data):

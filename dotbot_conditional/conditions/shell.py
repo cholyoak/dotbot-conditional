@@ -14,6 +14,6 @@ class ShellCondition(Condition):
 
     def handle(self, directive, data):
         if not self.can_handle(directive):
-            raise ValueError("%s cannot handle directive %s" % (self.__name, directive))
+            raise ValueError("%s cannot handle directive %s" % (self.__class__.__name__, directive))
         ret = dotbot.util.shell_command(data, cwd=self._context.base_directory())
         return ret == 0

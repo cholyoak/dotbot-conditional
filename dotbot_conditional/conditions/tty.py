@@ -15,7 +15,7 @@ class TtyCondition(Condition):
 
     def handle(self, directive, data=True):
         if not self.can_handle(directive):
-            raise ValueError("%s cannot handle directive %s" % (self.__name, directive))
+            raise ValueError("%s cannot handle directive %s" % (self.__class__.__name__, directive))
 
         expected = data if data is not None else True
         return expected == (sys.stdin.isatty() and sys.stdout.isatty() and sys.stderr.isatty())
