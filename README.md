@@ -108,3 +108,6 @@ Conditional based on whether stdin, stdout and stderr are a TTY. The primary use
 ```sh
 ${dotbot_cmd} --plugin-dir path/to/dotbot-condition -p path/to/custom/plugin.py
 ```
+
+## Credits
+This plugin takes inspiration from the existing [ifplatform](https://github.com/ssbanerje/dotbot-ifplatform), [ifarch](https://github.com/ryansch/dotbot-ifarch) and [if](https://github.com/wonderbeyond/dotbot-if) plugins, intending to provide a more extensible solution. The condition plugin model and handling is based on the original plugin model in core [dotbot](https://github.com/anishathalye/dotbot). Thanks/credits to the original authors for each of the above.
