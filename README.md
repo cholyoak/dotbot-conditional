@@ -100,6 +100,12 @@ Conditional based on whether stdin, stdout and stderr are a TTY. The primary use
 
 ```
 
+### Other plugins
+
+name | description
+ --------| --------
+[dotbot-gitcrypt](https://gitlab.com/gnfzdz/dotbot-gitcrypt) | Provides a condition based on whether target path(s) are currently locked as git-crypt encrypted files
+
 ## Creating custom condition plugins
 
 1. Create a python file containing the plugin. Plugins are structured the same as dotbot directive plugins, but instead extend the Condition base class. You can find examples [here](https://gitlab.com/gnfzdz/dotbot-conditional/-/tree/main/dotbot_conditional/conditions)
