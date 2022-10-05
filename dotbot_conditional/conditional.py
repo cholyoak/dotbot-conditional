@@ -41,7 +41,11 @@ class Conditional(dotbot.Plugin):
                             skip=self._context.options().skip,
                             options=self._context.options())
         if not isolated:
+            # ugly hack...
             dispatcher._context = self._context
+            for p in dispatcher._plugins:
+                p._context = self._context
+
         return dispatcher
 
     def _execute_nested(self, dispatcher, data):
