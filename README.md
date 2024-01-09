@@ -2,10 +2,12 @@
 
 A directive providing control flow within a dotbot configuration file with conditions processed by python plugins.
 
+This repository is a clone of https://gitlab.com/gnfzdz/dotbot-conditional/.
+
 ## Installation
 
 1. Add the plugin as a submodule to your dotfiles repository.
-   `git submodule add https://gitlab.com/gnfzdz/dotbot-conditional.git ${dotbot_conditional_dir}`
+   `git submodule add https://github.com/cholyoak/dotbot-conditional.git ${dotbot_conditional_dir}`
 2. Configure dotbot-conditional with an additional CLI argument when executing dotbot
    `... --plugin-dir ${dotbot_conditional_dir} ...`
 

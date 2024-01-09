@@ -1,5 +1,11 @@
+import glob
+import os
+
 import dotbot
 from dotbot.dispatcher import Dispatcher
+from dotbot.plugins import Clean, Create, Link, Shell
+from dotbot.util import module
+
 from dotbot_conditional.tester import Tester
 
 class Conditional(dotbot.Plugin):
@@ -39,7 +45,8 @@ class Conditional(dotbot.Plugin):
         dispatcher = Dispatcher(self._context.base_directory(),
                             only=self._context.options().only,
                             skip=self._context.options().skip,
-                            options=self._context.options())
+                            options=self._context.options(),
+                            plugins=self._load_plugins())
         if not isolated:
             # ugly hack...
             dispatcher._context = self._context
@@ -52,3 +59,16 @@ class Conditional(dotbot.Plugin):
         # if the data is a dictionary, wrap it in a list
         data = data if type(data) is list else [ data ]
         return dispatcher.dispatch(data)
+
+    def _load_plugins(self):
+        plugin_paths = self._context.options().plugins
+        plugins = []
+        for dir in self._context.options().plugin_dirs:
+            for path in glob.glob(os.path.join(dir, "*.py")):
+                plugin_paths.append(path)
+        for path in plugin_paths:
+            abspath = os.path.abspath(path)
+            plugins.extend(module.load(abspath))
+        if not self._context.options().disable_built_in_plugins:
+            plugins.extend([Clean, Create, Link, Shell])
+        return plugins
